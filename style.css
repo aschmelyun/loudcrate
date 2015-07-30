@@ -11,6 +11,6 @@ Text Domain: loudcrate
 Tags:
 
 This theme utlizes the Cannonfire front-end SCSS framework, and this
-file is solely used for importing the compiled CSS.
+file is solely used as a placeholder for WordPress to pull in the
+theme information.
 */
-@import('assets/css/main.min.css');

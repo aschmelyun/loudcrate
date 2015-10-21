@@ -1,6 +1,8 @@
 <?php
 /**
- * loudcrate functions and definitions
+ * loudcrate functions and definitions.
+ *
+ * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
  * @package loudcrate
  */
@@ -18,7 +20,7 @@ function loudcrate_setup() {
 	 * Make theme available for translation.
 	 * Translations can be filed in the /languages/ directory.
 	 * If you're building a theme based on loudcrate, use a find and replace
-	 * to change 'loudcrate' to the name of your theme in all the template files
+	 * to change 'loudcrate' to the name of your theme in all the template files.
 	 */
 	load_theme_textdomain( 'loudcrate', get_template_directory() . '/languages' );
 
@@ -36,7 +38,7 @@ function loudcrate_setup() {
 	/*
 	 * Enable support for Post Thumbnails on posts and pages.
 	 *
-	 * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
+	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 	 */
 	add_theme_support( 'post-thumbnails' );
 
@@ -59,7 +61,7 @@ function loudcrate_setup() {
 
 	/*
 	 * Enable support for Post Formats.
-	 * See http://codex.wordpress.org/Post_Formats
+	 * See https://developer.wordpress.org/themes/functionality/post-formats/
 	 */
 	add_theme_support( 'post-formats', array(
 		'aside',
@@ -93,7 +95,7 @@ add_action( 'after_setup_theme', 'loudcrate_content_width', 0 );
 /**
  * Register widget area.
  *
- * @link http://codex.wordpress.org/Function_Reference/register_sidebar
+ * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
 function loudcrate_widgets_init() {
 	register_sidebar( array(
@@ -102,8 +104,8 @@ function loudcrate_widgets_init() {
 		'description'   => '',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
-		'before_title'  => '<h1 class="widget-title">',
-		'after_title'   => '</h1>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
 	) );
 }
 add_action( 'widgets_init', 'loudcrate_widgets_init' );
@@ -113,18 +115,21 @@ add_action( 'widgets_init', 'loudcrate_widgets_init' );
  */
 function loudcrate_scripts() {
 	wp_enqueue_style( 'loudcrate-style', get_stylesheet_uri() );
-	
-	wp_enqueue_style( 'loudcrate-cannonfire', get_template_directory_uri() . '/assets/css/main.min.css' );
 
-	wp_enqueue_script( 'loudcrate-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), '20120206', true );
+	wp_enqueue_script( 'loudcrate-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
 
-	wp_enqueue_script( 'loudcrate-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '20130115', true );
+	wp_enqueue_script( 'loudcrate-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'loudcrate_scripts' );
+
+/**
+ * Implement the Custom Header feature.
+ */
+require get_template_directory() . '/inc/custom-header.php';
 
 /**
  * Custom template tags for this theme.
@@ -135,6 +140,11 @@ require get_template_directory() . '/inc/template-tags.php';
  * Custom functions that act independently of the theme templates.
  */
 require get_template_directory() . '/inc/extras.php';
+
+/**
+ * Customizer additions.
+ */
+require get_template_directory() . '/inc/customizer.php';
 
 /**
  * Load Jetpack compatibility file.

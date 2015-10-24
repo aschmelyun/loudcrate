@@ -1,0 +1,18 @@
+{
+  "name": "loudcrate",
+  "version": "1.0.0",
+  "description": "The custom WordPress theme for loudcrate.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://aschmelyun@github.com/aschmelyun/loudcrate.git"
+  },
+  "author": "aschmelyun",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/aschmelyun/loudcrate/issues"
+  }
+}
